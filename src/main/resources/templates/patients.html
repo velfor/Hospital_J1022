@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пациентов</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Список пациентов</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Ф.И.О</th>
+        <th>Дата рождения</th>
+        <th>Диагноз</th>
+        <th>Дата поступления</th>
+        <th>Дата выписки</th>
+        <th>Отделение</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${patientsList.empty}">
+        <td colspan="3">List is empty</td>
+    </tr>
+    <tr th:each="patient : ${patientsList}">
+        <td th:text="${patient.fullName}"></td>
+        <td th:text="${patient.dateOfBirth}"></td>
+        <td th:text="${patient.diagnosis}"></td>
+        <td th:text="${patient.dateOfAdmission}"></td>
+        <td th:text="${patient.dateOfDischarge}"></td>
+        <td th:text="${patient.department}"></td>
+        <td>
+            <button class="edit-btn">Редактировать</button>
+            <button class="delete-btn">Удалить</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<!--<p th:if="${patientsList.empty}"></p>
+<p>List is empty</p>
+<p th:each="patient : ${patientsList}" th:text="${patient.fullName}"></p>-->
+
+</body>
+</html>

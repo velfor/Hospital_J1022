@@ -1,0 +1,2 @@
+INSERT INTO patients (full_name, date_of_birth, diagnosis, date_of_admission, date_of_discharge, department_id) VALUES ('Иванов Петр Иванович', '1958-03-08', 'пневмония', '2022-03-11', '2022-03-14', 1);
+INSERT INTO patients (full_name, date_of_birth, diagnosis, date_of_admission, date_of_discharge, department_id) VALUES ('Батюкова Мария Сергеевна', '1967-07-02', 'атипичная пневмония', '2022-12-18', NULL, 1);

@@ -13,7 +13,11 @@
         <input type="text" th:field="*{fullName}"><br/>
 
         <label>Дата рождения (гггг-мм-дд): </label>
-        <input type="text" th:field="*{dateOfBirth}"><br/>
+        <input type="date" th:field="*{dateOfBirth}"><br/>
+
+        <label>Пол:</label>
+        <input type="radio" th:field="*{gender}" value="Мужской" />Мужской
+        <input type="radio" th:field="*{gender}" value="Женский" />Женский<br/>
 
         <label>Диагноз:</label>
         <select th:field="*{diagnosis}">
@@ -29,7 +33,7 @@
 
         <label>Отделение:</label>
         <select id="department" th:field="*{department}" required>
-            <option th:each="dept : ${departmentsList}" th:value="${dept}" th:text="${dept.name}"></option>
+            <option th:each="dept : ${departmentsList}" th:value="${dept.id}" th:text="${dept.name}"></option>
         </select><br>
 
         <button type="submit">Внести данные</button>

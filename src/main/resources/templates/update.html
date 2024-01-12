@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновить</title>
+    <link rel="stylesheet" href="input_form.css">
+</head>
+<body>
+<h2>Обновить пациента</h2>
+
+<form action="#" th:action="@{/save}" method="post" th:object="${patient}">
+    <input type="hidden" th:field="*{id}">
+
+    <label>Фамилия, имя, отчество полностью: </label>
+    <input type="text" th:field="*{fullName}"><br/>
+
+    <label>Дата рождения (гггг-мм-дд): </label>
+    <input type="date" th:field="*{dateOfBirth}"><br/>
+
+    <label>Пол:</label>
+    <input type="radio" th:field="*{gender}" value="Мужской" />Мужской
+    <input type="radio" th:field="*{gender}" value="Женский" />Женский<br/>
+
+    <label>Диагноз:</label>
+    <select th:field="*{diagnosis}">
+        <option th:each="diag : ${allDiagnosis}" th:value="${diag}" th:text="${diag}" />
+    </select>
+    <br/>
+
+    <label>Дата поступления (гггг-мм-дд):</label>
+    <input type="text" th:field="*{dateOfAdmission}"><br/>
+
+    <label>Дата выписки (гггг-мм-дд):</label>
+    <input type="text" th:field="*{dateOfDischarge}"><br/>
+
+    <label>Отделение:</label>
+    <select id="department" th:field="*{department}" required>
+        <option th:each="dept : ${departmentsList}" th:value="${dept.id}" th:text="${dept.name}"></option>
+    </select><br>
+
+    <button type="submit">Внести данные</button>
+</form>
+</body>
+</html>

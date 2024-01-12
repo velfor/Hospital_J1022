@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public interface PatientRepository extends CrudRepository<Patient, Long>,
-        PagingAndSortingRepository<Patient, Long>
+public interface PatientRepository extends PagingAndSortingRepository<Patient, Long>,
+        CrudRepository<Patient, Long>
 {
 
 }

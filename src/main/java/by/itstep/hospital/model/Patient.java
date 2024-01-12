@@ -1,31 +1,42 @@
 package by.itstep.hospital.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldNameConstants;
 
 import java.time.LocalDate;
 
-@Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
+@FieldNameConstants
 @Entity
 @Table(name = "patients")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name="full_name", length = 50)
     private String fullName;
-    @Column(name="date_of_birth")
+
+    @Column(name="gender", length = 8)
+    private String gender;
+
+    @Column(name="date_of_birth", columnDefinition = "DATE")
     private LocalDate dateOfBirth;
+
     @Column(name="diagnosis", length = 100)
     private String diagnosis;
-    @Column(name="date_of_admission")
+
+    @Column(name="date_of_admission", columnDefinition = "DATE")
     private LocalDate dateOfAdmission;
-    @Column(name="date_of_discharge")
+
+    @Column(name="date_of_discharge", columnDefinition = "DATE")
     private LocalDate dateOfDischarge;
-    @JsonIgnore
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id")
     private Department department;
